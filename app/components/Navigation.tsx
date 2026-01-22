@@ -1,10 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Navigation() {
 	const [isOpen, setIsOpen] = useState(false);
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
 
 	return (
 		<header className='bg-amazon shadow-sm border-b border-gray-200 mainPadding'>
@@ -27,8 +41,8 @@ export default function Navigation() {
 					<div className='shrink-0'></div>
 					{/* Desktop Navigation */}
 					<div className='hidden md:flex items-center space-x-8'>
-						<div className='relative'>
-							<button onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+						<div className='relative' ref={dropdownRef}>
+							<button onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 hover:bg-[#EAE2D0] px-3 py-2 text-sm font-medium'>
 								Platforms
 								<svg className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
 									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
@@ -54,25 +68,27 @@ export default function Navigation() {
 							</div>
 						</div>
 
-						<Link href='/omnipath' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+						<Link href='/omnipath' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0]'>
 							OmniPATH
 						</Link>
 
-						<Link href='/documentation' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+						<Link href='/documentation' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0]'>
 							Documentation
 						</Link>
 
-						<Link href='/api' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+						<Link href='/api' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0]'>
 							Api
 						</Link>
 					</div>
 					<div className='hidden md:flex items-center space-x-4'>
 						<Link
 							href='/signin'
-							className='text-gray-700 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium border border-gray-300 hover:bg-gray-100 transition-colors'>
+							className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 transition-colors bg-transparent h-10'>
 							Sign In
 						</Link>
-						<Link href='/signup' className='bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors'>
+						<Link
+							href='/signup'
+							className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 transition-colors bg-transparent h-10'>
 							Sign Up
 						</Link>
 					</div>
