@@ -8,7 +8,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint",
-		"scraper": "tsx cli.ts"
+		"scraper": "tsx lib/cli.ts"
 	},
 	"dependencies": {
 		"crypto": "^1.0.1",
