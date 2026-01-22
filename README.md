@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eCommerce Document Scraper
 
-## Getting Started
+A proof-of-concept application for automating document retrieval from eCommerce platforms.
 
-First, run the development server:
+## Features
+
+- Platform management (add/edit/remove credentials)
+- Automated login with headless browser
+- Document download with duplicate prevention
+- Rate limiting and random delays
+- MFA support (manual or TOTP)
+
+## Setup
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Install Playwright browsers:
+
+   ```bash
+   npx playwright install
+   ```
+
+3. Initialize the database and folders:
+
+   ```bash
+   npm run scraper init
+   ```
+
+## Usage
+
+### Add a Platform
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run scraper add-platform "Amazon Business" "https://www.amazon.com" "your@email.com" "password" "totp_secret_optional"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### List Platforms
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run scraper list-platforms
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Run Scraper for a Platform
 
-## Learn More
+```bash
+npm run scraper run-scraper 1
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Database**: SQLite for platforms and downloaded documents
+- **Encryption**: AES-256 for credentials
+- **Automation**: Playwright for browser control
+- **MFA**: Speakeasy for TOTP
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Next Steps
 
-## Deploy on Vercel
+- Add more platforms (Screwfix, RS Components, etc.)
+- Implement API for integration
+- Add scheduled runs
+- Improve error handling and logging
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Disclaimer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a proof-of-concept. Use responsibly and in accordance with platform terms of service.
