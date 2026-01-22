@@ -11,8 +11,9 @@
 		"scraper": "node cli.js"
 	},
 	"dependencies": {
-		"better-sqlite3": "^12.6.2",
 		"crypto": "^1.0.1",
+		"mongodb": "^6.21.0",
+		"mongoose": "^8.21.0",
 		"next": "16.1.4",
 		"playwright": "^1.57.0",
 		"react": "19.2.3",
