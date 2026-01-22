@@ -2,10 +2,7 @@ import mongoose, { Document as MongooseDocument } from 'mongoose';
 
 const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://your-connection-string';
 
-mongoose.connect(mongoURI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose.connect(mongoURI);
 
 interface IPlatform extends MongooseDocument {
 	name: string;
@@ -48,4 +45,4 @@ const documentSchema = new mongoose.Schema<IDocument>({
 const Platform = mongoose.model<IPlatform>('Platform', platformSchema);
 const Document = mongoose.model<IDocument>('Document', documentSchema);
 
-export { Platform, Document, IPlatform, IDocument };
+export { Platform, Document };
