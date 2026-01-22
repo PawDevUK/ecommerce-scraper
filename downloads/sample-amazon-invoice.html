@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Business Invoice - Sample</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { text-align: center; border-bottom: 2px solid #232F3E; padding-bottom: 10px; }
+        .invoice-details { margin: 20px 0; }
+        .billing-info { display: flex; justify-content: space-between; }
+        .items { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .items th, .items td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .items th { background-color: #f2f2f2; }
+        .total { text-align: right; margin-top: 20px; font-weight: bold; }
+        .footer { margin-top: 40px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Amazon Business Invoice</h1>
+        <p>Invoice Number: AB-2026-001234</p>
+        <p>Invoice Date: January 22, 2026</p>
+    </div>
+
+    <div class="billing-info">
+        <div>
+            <h3>Bill To:</h3>
+            <p>OmniPATH Corporation</p>
+            <p>123 Business Street</p>
+            <p>Business City, BC 12345</p>
+            <p>Canada</p>
+        </div>
+        <div>
+            <h3>Ship To:</h3>
+            <p>OmniPATH Warehouse</p>
+            <p>456 Industrial Ave</p>
+            <p>Warehouse City, WC 67890</p>
+            <p>Canada</p>
+        </div>
+    </div>
+
+    <div class="invoice-details">
+        <p><strong>PO Number:</strong> PO-2026-789012</p>
+        <p><strong>Payment Terms:</strong> Net 30</p>
+        <p><strong>Due Date:</strong> February 21, 2026</p>
+    </div>
+
+    <table class="items">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>B08N5WRWNW</td>
+                <td>Industrial Safety Gloves - Size Large</td>
+                <td>50</td>
+                <td>$12.99</td>
+                <td>$649.50</td>
+            </tr>
+            <tr>
+                <td>B07ZPKZ8P7</td>
+                <td>Professional Tool Set - 200 Piece</td>
+                <td>5</td>
+                <td>$89.99</td>
+                <td>$449.95</td>
+            </tr>
+            <tr>
+                <td>B08L9QJZ8M</td>
+                <td>Office Supplies Bundle</td>
+                <td>10</td>
+                <td>$24.50</td>
+                <td>$245.00</td>
+            </tr>
+            <tr>
+                <td>B09K5M8N2P</td>
+                <td>Cleaning Supplies - Professional Grade</td>
+                <td>25</td>
+                <td>$18.75</td>
+                <td>$468.75</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total">
+        <p>Subtotal: $1,813.20</p>
+        <p>Tax (GST/HST): $90.66</p>
+        <p>Shipping: $25.00</p>
+        <p><strong>Total: $1,928.86</strong></p>
+    </div>
+
+    <div class="footer">
+        <p>This is a SAMPLE invoice for testing purposes only. Not a real Amazon Business transaction.</p>
+        <p>Amazon Business - 410 Terry Ave N, Seattle, WA 98109</p>
+        <p>For questions about this invoice, contact Amazon Business Customer Service.</p>
+    </div>
+</body>
+</html>
