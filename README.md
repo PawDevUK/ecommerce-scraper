@@ -24,7 +24,9 @@ A proof-of-concept application for automating document retrieval from eCommerce 
    npx playwright install
    ```
 
-3. Initialize the database and folders:
+3. Set up MongoDB Atlas (cloud MongoDB) and set MONGODB_URI environment variable, or update the URI in db.js
+
+4. Initialize the folders:
 
    ```bash
    npm run scraper init
@@ -52,10 +54,11 @@ npm run scraper run-scraper 1
 
 ## Architecture
 
-- **Database**: SQLite for platforms and downloaded documents
+- **Database**: MongoDB Atlas (cloud) with Mongoose ODM
 - **Encryption**: AES-256 for credentials
 - **Automation**: Playwright for browser control
 - **MFA**: Speakeasy for TOTP
+- **Language**: TypeScript for type safety
 
 ## Next Steps
 
