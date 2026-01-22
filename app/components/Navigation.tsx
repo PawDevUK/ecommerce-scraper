@@ -21,6 +21,25 @@ export default function Navigation() {
 		};
 	}, []);
 
+	const menuItems = [
+		{ href: '/omnipath', label: 'OmniPATH' },
+		{ href: '/documentation', label: 'Documentation' },
+		{ href: '/api', label: 'Api' },
+	];
+
+	const authItems = [
+		{ href: '/signin', label: 'Sign In' },
+		{ href: '/signup', label: 'Sign Up' },
+	];
+
+	const platformItems = [
+		{ href: '/amazon-business', label: 'Amazon Business' },
+		{ href: '/screwfix', label: 'Screwfix' },
+		{ href: '/rs-components', label: 'RS Components' },
+		{ href: '/bidfood', label: 'Bidfood' },
+		{ href: '/costco', label: 'CostCo' },
+	];
+
 	return (
 		<header className='bg-amazon shadow-sm border-b border-gray-200 mainPadding max-w-[1000px] mx-auto'>
 			{/* Top Bar */}
@@ -54,47 +73,29 @@ export default function Navigation() {
 							</div>
 							<div
 								className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg transition-opacity duration-200 z-10 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-								<Link href='/amazon-business' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Amazon Business
-								</Link>
-								<Link href='/screwfix' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Screwfix
-								</Link>
-								<Link href='/rs-components' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									RS Components
-								</Link>
-								<Link href='/bidfood' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Bidfood
-								</Link>
-								<Link href='/costco' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									CostCo
-								</Link>
+								{platformItems.map((item) => (
+									<Link key={item.href} href={item.href} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+										{item.label}
+									</Link>
+								))}
 							</div>
 						</div>
 
-						<Link href='/omnipath' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							OmniPATH
-						</Link>
-
-						<Link href='/documentation' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							Documentation
-						</Link>
-
-						<Link href='/api' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							Api
-						</Link>
+						{menuItems.map((item) => (
+							<Link key={item.href} href={item.href} className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
+								{item.label}
+							</Link>
+						))}
 					</div>
 					<div className='hidden md:flex items-center space-x-4'>
-						<Link
-							href='/signin'
-							className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
-							Sign In
-						</Link>
-						<Link
-							href='/signup'
-							className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
-							Sign Up
-						</Link>
+						{authItems.map((item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
+								{item.label}
+							</Link>
+						))}
 					</div>
 
 					{/* Mobile menu button */}
@@ -118,43 +119,27 @@ export default function Navigation() {
 								</svg>
 							</div>
 							<div className={`${isOpen ? 'block' : 'hidden'} ml-4 space-y-2`}>
-								<Link href='/amazon-business' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Amazon Business
-								</Link>
-								<Link href='/screwfix' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Screwfix
-								</Link>
-								<Link href='/rs-components' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									RS Components
-								</Link>
-								<Link href='/bidfood' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									Bidfood
-								</Link>
-								<Link href='/costco' className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-									CostCo
-								</Link>
+								{platformItems.map((item) => (
+									<Link key={item.href} href={item.href} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+										{item.label}
+									</Link>
+								))}
 							</div>
 						</div>
-						<Link href='/omnipath' className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							OmniPATH
-						</Link>
-						<Link href='/documentation' className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							Documentation
-						</Link>
-						<Link href='/api' className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-							Api
-						</Link>
+						{menuItems.map((item) => (
+							<Link key={item.href} href={item.href} className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
+								{item.label}
+							</Link>
+						))}
 						<div className='flex space-x-4'>
-							<Link
-								href='/signin'
-								className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
-								Sign In
-							</Link>
-							<Link
-								href='/signup'
-								className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
-								Sign Up
-							</Link>
+							{authItems.map((item) => (
+								<Link
+									key={item.href}
+									href={item.href}
+									className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
+									{item.label}
+								</Link>
+							))}
 						</div>
 					</div>
 				</div>
