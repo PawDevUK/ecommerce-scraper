@@ -24,7 +24,7 @@ export default function Navigation() {
 	const menuItems = [
 		{ href: '/omnipath', label: 'OmniPATH' },
 		{ href: '/documentation', label: 'Documentation' },
-		{ href: '/api', label: 'Api' },
+		{ href: '/api', label: 'Api Connect' },
 	];
 
 	const authItems = [
@@ -63,9 +63,11 @@ export default function Navigation() {
 					</Link>
 					<div className='shrink-0'></div>
 					{/* Desktop Navigation */}
-					<div className='hidden md:flex items-center space-x-8'>
+					<div className='hidden md:flex items-center space-x-3'>
 						<div className='relative' ref={dropdownRef}>
-							<div onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 hover:bg-[#EAE2D0] px-3 py-2 text-sm font-medium cursor-pointer'>
+							<div
+								onClick={() => setIsOpen(!isOpen)}
+								className='flex items-center text-gray-700 hover:bg-[#EAE2D0] px-3 py-2 text-sm font-medium cursor-pointer rounded-[5px]'>
 								Platforms
 								<svg className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
 									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
@@ -74,7 +76,7 @@ export default function Navigation() {
 							<div
 								className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg transition-opacity duration-200 z-10 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
 								{platformItems.map((item) => (
-									<Link key={item.href} href={item.href} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+									<Link key={item.href} href={item.href} className='block px-4 py-2 text-sm text-gray-700 hover:bg-[#EAE2D0]'>
 										{item.label}
 									</Link>
 								))}
@@ -109,8 +111,8 @@ export default function Navigation() {
 				</div>
 
 				{/* Mobile Menu */}
-				<div className={`md:hidden ${mobileOpen ? 'block' : 'hidden'} bg-white border-t border-gray-200`}>
-					<div className='px-4 py-4 space-y-4'>
+				<div className={`md:hidden ${mobileOpen ? 'block' : 'hidden'} border-t border-gray-200`}>
+					<div className='px-4 py-4 space-y-1'>
 						<div>
 							<div onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 px-3 py-2 text-sm font-medium w-full text-left cursor-pointer'>
 								Platforms
@@ -131,7 +133,7 @@ export default function Navigation() {
 								{item.label}
 							</Link>
 						))}
-						<div className='flex space-x-4'>
+						<div className='flex mt-5 space-x-4 justify-center'>
 							{authItems.map((item) => (
 								<Link
 									key={item.href}
