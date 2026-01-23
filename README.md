@@ -194,6 +194,10 @@ npm run scraper
 
 ## 🗺️ Roadmap
 
+- [ ] Create list of services
+- [ ] Create element for servic with login and password to service
+- [ ] Create element with list of invoices which will be accessible after user log into service.
+
 - [ ] Add support for Screwfix, RS Components
 - [ ] Web dashboard for schedule management
 - [ ] Email notifications for new invoices
