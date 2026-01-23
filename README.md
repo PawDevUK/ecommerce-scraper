@@ -1,6 +1,9 @@
 # Fetchy - eCommerce Document Scraper
 
-A modern full-stack application for automating invoice and document retrieval from eCommerce platforms. Built with Next.js for the frontend and TypeScript/Node.js for the backend scraper.
+A modern full-stack application for automating invoice and document retrieval from eCommerce platforms. Built with Next.js 16 for the frontend and TypeScript/Node.js for the backend scraper. This project demonstrates end-to-end implementation of web scraping with secure credential management and a responsive user interface.
+
+**Repository**: [github.com/PawDevUK/ecommerce-scraper](https://github.com/PawDevUK/ecommerce-scraper)  
+**Live Demo**: Coming soon (deploying to Vercel)
 
 ## 🎯 Features
 
@@ -16,10 +19,12 @@ A modern full-stack application for automating invoice and document retrieval fr
 
 ### Web Interface (Next.js)
 
-- Clean, responsive UI built with React and Tailwind CSS
+- Clean, responsive UI built with React 19 and Tailwind CSS
+- Enhanced navigation with mobile menu and dropdown functionality
 - Platform management dashboard
 - Document history and tracking
 - Invoice search and filtering
+- Fully responsive design for desktop and mobile devices
 
 ### CLI Tool
 
@@ -106,20 +111,24 @@ npm run scraper help
 ```
 ├── app/                          # Next.js app directory
 │   ├── components/               # React components
-│   │   └── button.tsx
+│   │   ├── button.tsx           # Reusable button component
+│   │   └── Navigation.tsx       # Enhanced navigation with mobile/dropdown
 │   ├── page.tsx                  # Home page
-│   ├── layout.tsx                # Root layout
-│   └── globals.css               # Global styles
+│   ├── layout.tsx                # Root layout with navigation
+│   └── globals.css               # Global styles and Tailwind config
 ├── lib/                          # Backend logic
 │   ├── cli.ts                    # CLI interface
-│   ├── scraper.ts                # Core scraper logic
-│   ├── db.ts                     # Database connection
-│   └── crypto.ts                 # Encryption utilities
+│   ├── scraper.ts                # Core scraper logic with Playwright
+│   ├── db.ts                     # MongoDB/Mongoose models and connection
+│   └── crypto.ts                 # AES-256 encryption utilities
 ├── public/                       # Static assets
-├── downloads/                    # Downloaded documents
-├── package.json                  # Dependencies
+├── downloads/                    # Downloaded documents storage
+│   └── sample-amazon-invoice.html # Example invoice
+├── package.json                  # Dependencies and scripts
 ├── next.config.ts                # Next.js configuration
 ├── tsconfig.json                 # TypeScript configuration
+├── eslint.config.mjs             # ESLint configuration
+├── postcss.config.mjs            # PostCSS configuration
 └── README.md                     # This file
 ```
 
@@ -149,9 +158,10 @@ npm run scraper help
 ## 🔒 Security
 
 - **Credential Encryption**: All stored credentials are encrypted with AES-256
-- **Environment Variables**: Sensitive data stored in `.env.local`
-- **Type Safety**: Full TypeScript support
-- **Secure Dependencies**: Regular dependency audits
+- **Environment Variables**: Sensitive data stored in `.env.local` (not tracked in git)
+- **Type Safety**: Full TypeScript support for compile-time error detection
+- **Secure Dependencies**: Regular dependency audits with npm
+- **Interface Exports**: Proper TypeScript interface exports for type checking
 
 ## 📝 API Reference
 
@@ -194,9 +204,23 @@ npm run scraper
 
 ## 🗺️ Roadmap
 
-- [ ] Create list of services
-- [ ] Create element for servic with login and password to service
-- [ ] Create element with list of invoices which will be accessible after user log into service.
+### In Progress
+
+- [ ] Vercel deployment and live demo
+- [ ] Enhanced welcome page with platform overview and call-to-action
+
+### Frontend Development
+
+- [ ] Complete Navigation component styling and responsiveness
+- [ ] Build authentication pages (Sign In/Sign Up) with form validation
+- [ ] Create platform-specific pages (Amazon Business, Screwfix, RS Components, etc.)
+- [ ] Implement invoice fetching UI with input forms and loading states
+- [ ] Design results display for fetched invoices with proper formatting
+- [ ] Add error handling and user feedback components
+- [ ] Integrate API endpoints for backend communication
+- [ ] Polish global styles and add consistent theming
+
+### Backend & Features
 
 - [ ] Add support for Screwfix, RS Components
 - [ ] Web dashboard for schedule management
@@ -205,6 +229,17 @@ npm run scraper
 - [ ] Docker containerization
 - [ ] Improved error handling and logging
 - [ ] User authentication for web UI
+
+### Completed ✅
+
+- [x] Initial Next.js project setup with TypeScript
+- [x] MongoDB integration with Mongoose
+- [x] Core scraper logic with Playwright
+- [x] Credential encryption with AES-256
+- [x] Navigation component with mobile menu and dropdown
+- [x] Responsive layout styling
+- [x] TypeScript declarations for CSS modules
+- [x] CLI interface for scraper operations
 
 ## ⚠️ Disclaimer
 
@@ -222,8 +257,9 @@ MIT License - See LICENSE file for details
 
 ## 👤 Author
 
-Created by Pawel
+Created by Pawel  
+GitHub: [@PawDevUK](https://github.com/PawDevUK)
 
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: January 23, 2026
