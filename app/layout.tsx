@@ -26,11 +26,11 @@ export default function RootLayout({
 				<Navigation />
 
 				{/* Main Content */}
-				<main className='min-h-screen max-w-[1000px] mx-auto px-4'>{children}</main>
+				<main className='min-h-screen  mx-auto px-4'>{children}</main>
 
 				{/* Footer */}
 				<footer className='bg-amazon text-gray-700 py-8'>
-					<div className='max-w-[1000px] mx-auto px-4'>
+					<div className=' mx-auto px-4'>
 						<div className='text-center'>
 							<p className=' text-sm'>© 2026 Fetchy. All rights reserved.</p>
 						</div>
