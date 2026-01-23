@@ -22,7 +22,9 @@ export default function Navigation() {
 	}, []);
 
 	const menuItems = [
-		{ href: '/omnipath', label: 'OmniPATH' },
+		{ href: '/dashboard', label: 'Dashboard' },
+		{ href: '/notifications', label: 'Notifications' },
+		{ href: '/payables', label: 'Payables' },
 		{ href: '/documentation', label: 'Documentation' },
 		{ href: '/api', label: 'Api Connect' },
 	];
@@ -41,33 +43,38 @@ export default function Navigation() {
 	];
 
 	return (
-		<header className='bg-amazon shadow-sm border-b border-gray-200 mainPadding max-w-[1000px] mx-auto'>
+		<header className='bg-amazon shadow-sm border-b border-gray-200 mainPadding  mx-auto'>
 			{/* Top Bar */}
 			<div className='bg-amazon text-gray-700 px-4 py-2'>
-				<div className='max-w-[1000px] mx-auto flex justify-between items-center text-sm'>
-					<div className=' space-x-4'>
+				<div className='mx-auto flex items-center justify-between text-sm px-4 pt-3'>
+					<div className='space-x-4'>
 						<span className='sr-only'>Skip to main content</span>
 						<Link href='/' className='text-3xl font-bold text-gray-700 hidden md:block'>
-							Fetchy
+							Fetch<span className='text-[#FF6200]'>y</span>
 						</Link>
+					</div>
+					<div className='hidden md:flex items-center space-x-4'>
+						{authItems.map((item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
+								{item.label}
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>
 
 			{/* Main Navigation */}
-			<nav className='max-w-[1000px] mx-auto px-4'>
-				<div className='flex justify-between items-center h-16'>
-					{/* Logo */}
-					<Link href='/' className='text-3xl font-bold text-gray-700 block md:hidden'>
-						Fetchy
-					</Link>
-					<div className='shrink-0'></div>
+			<nav className=' mx-auto px-4'>
+				<div className='flex justify-center items-center h-14'>
 					{/* Desktop Navigation */}
 					<div className='hidden md:flex items-center space-x-3'>
 						<div className='relative' ref={dropdownRef}>
 							<div
 								onClick={() => setIsOpen(!isOpen)}
-								className='flex items-center text-gray-700 hover:bg-[#EAE2D0] px-3 py-2 text-sm font-medium cursor-pointer rounded-[5px]'>
+								className='flex items-center text-gray-700 hover:text-[#FF6200] hover:bg-[#EAE2D0] hover:shadow-lg px-3 py-2 text-lg font-medium cursor-pointer rounded-[5px] transition-all'>
 								Platforms
 								<svg className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
 									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
@@ -76,7 +83,7 @@ export default function Navigation() {
 							<div
 								className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg transition-opacity duration-200 z-10 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
 								{platformItems.map((item) => (
-									<Link key={item.href} href={item.href} className='block px-4 py-2 text-sm text-gray-700 hover:bg-[#EAE2D0]'>
+									<Link key={item.href} href={item.href} className='block px-4 py-2 text-md text-gray-700 hover:bg-[#EAE2D0]'>
 										{item.label}
 									</Link>
 								))}
@@ -84,17 +91,10 @@ export default function Navigation() {
 						</div>
 
 						{menuItems.map((item) => (
-							<Link key={item.href} href={item.href} className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
-								{item.label}
-							</Link>
-						))}
-					</div>
-					<div className='hidden md:flex items-center space-x-4'>
-						{authItems.map((item) => (
 							<Link
 								key={item.href}
 								href={item.href}
-								className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
+								className='text-gray-700 hover:text-[#FF6200] px-3 py-2 text-lg font-medium hover:bg-[#EAE2D0] hover:shadow-lg rounded-[5px] transition-all'>
 								{item.label}
 							</Link>
 						))}
@@ -138,7 +138,7 @@ export default function Navigation() {
 								<Link
 									key={item.href}
 									href={item.href}
-									className='flex items-center justify-center text-gray-700 border border-black px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-gray-900 hover:shadow-lg transition-all bg-transparent h-10'>
+									className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
 									{item.label}
 								</Link>
 							))}
