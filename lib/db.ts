@@ -4,7 +4,7 @@ const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://your-connection-strin
 
 mongoose.connect(mongoURI);
 
-interface IPlatform extends MongooseDocument {
+export interface IPlatform extends MongooseDocument {
 	name: string;
 	url: string;
 	username: string;
