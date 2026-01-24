@@ -20,13 +20,13 @@ export default function NotificationsPage() {
 
 				{/* Description */}
 				<p className='text-gray-500 mb-8 leading-relaxed'>
-					Stay updated with real-time notifications about your document processing, platform updates, and important activities. We're crafting the perfect notification
-					experience for you.
+					Stay updated with real-time notifications about your document processing, platform updates, and important activities. We&apos;re crafting the perfect
+					notification experience for you.
 				</p>
 
 				{/* Features List */}
 				<div className='mb-8 text-left'>
-					<p className='text-sm font-semibold text-gray-700 mb-4'>What's coming:</p>
+					<p className='text-sm font-semibold text-gray-700 mb-4'>What&apos;s coming:</p>
 					<ul className='space-y-2'>
 						<li className='flex items-center text-gray-600'>
 							<i className='fa-solid fa-check text-green-500 mr-3'></i>
