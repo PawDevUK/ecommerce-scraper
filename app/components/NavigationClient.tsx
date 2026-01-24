@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { authService } from '../../lib/auth';
 
 type Platform = {
 	_id: string;
@@ -15,7 +17,36 @@ type NavigationClientProps = {
 export default function NavigationClient({ platforms }: NavigationClientProps) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [currentUser, setCurrentUser] = useState<any>(null);
 	const dropdownRef = useRef<HTMLDivElement>(null);
+	const router = useRouter();
+
+	useEffect(() => {
+		// Check login status on mount
+		setIsLoggedIn(authService.isLoggedIn());
+		setCurrentUser(authService.getCurrentUser());
+
+		// Listen for auth state changes
+		const handleAuthChange = (event: Event) => {
+			const customEvent = event as CustomEvent;
+			setIsLoggedIn(customEvent.detail.isLoggedIn);
+			setCurrentUser(customEvent.detail.user);
+		};
+
+		// Listen for storage changes (cross-tab)
+		const handleStorageChange = () => {
+			setIsLoggedIn(authService.isLoggedIn());
+			setCurrentUser(authService.getCurrentUser());
+		};
+
+		window.addEventListener('authStateChanged', handleAuthChange);
+		window.addEventListener('storage', handleStorageChange);
+		return () => {
+			window.removeEventListener('authStateChanged', handleAuthChange);
+			window.removeEventListener('storage', handleStorageChange);
+		};
+	}, []);
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -29,6 +60,13 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, []);
+
+	const handleLogout = () => {
+		authService.logout();
+		setIsLoggedIn(false);
+		setCurrentUser(null);
+		router.push('/');
+	};
 
 	const menuItems = [
 		{ href: '/dashboard', label: 'Dashboard' },
@@ -55,14 +93,28 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 						</Link>
 					</div>
 					<div className='hidden md:flex items-center space-x-4'>
-						{authItems.map((item) => (
-							<Link
-								key={item.href}
-								href={item.href}
-								className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
-								{item.label}
-							</Link>
-						))}
+						{isLoggedIn ? (
+							<div className='flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
+								<div className='w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-semibold'>
+									{currentUser?.fullName?.charAt(0).toUpperCase() || 'U'}
+								</div>
+								<div className='flex flex-col'>
+									<span className='text-gray-700 text-sm font-medium'>{currentUser?.fullName || 'User'}</span>
+									<button onClick={handleLogout} className='text-green-600 text-xs font-semibold hover:text-green-800 transition-colors text-left'>
+										Log Out
+									</button>
+								</div>
+							</div>
+						) : (
+							authItems.map((item) => (
+								<Link
+									key={item.href}
+									href={item.href}
+									className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
+									{item.label}
+								</Link>
+							))
+						)}
 					</div>
 				</div>
 			</div>
@@ -118,6 +170,19 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 				{/* Mobile Menu */}
 				<div className={`md:hidden ${mobileOpen ? 'block' : 'hidden'} border-t border-gray-200`}>
 					<div className='px-4 py-4 space-y-1'>
+						{isLoggedIn && (
+							<div className='mb-4 flex items-center space-x-2 bg-green-50 px-3 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
+								<div className='w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-semibold text-sm'>
+									{currentUser?.fullName?.charAt(0).toUpperCase() || 'U'}
+								</div>
+								<div className='flex flex-col'>
+									<span className='text-gray-700 text-sm font-medium'>{currentUser?.fullName || 'User'}</span>
+									<button onClick={handleLogout} className='text-green-600 text-xs font-semibold hover:text-green-800 transition-colors text-left'>
+										Log Out
+									</button>
+								</div>
+							</div>
+						)}
 						<div>
 							<div onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 px-3 py-2 text-sm font-medium w-full text-left cursor-pointer'>
 								Platforms
@@ -142,16 +207,18 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 								{item.label}
 							</Link>
 						))}
-						<div className='flex mt-5 space-x-4 justify-center'>
-							{authItems.map((item) => (
-								<Link
-									key={item.href}
-									href={item.href}
-									className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
-									{item.label}
-								</Link>
-							))}
-						</div>
+						{!isLoggedIn && (
+							<div className='flex mt-5 space-x-4 justify-center flex-col'>
+								{authItems.map((item) => (
+									<Link
+										key={item.href}
+										href={item.href}
+										className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
+										{item.label}
+									</Link>
+								))}
+							</div>
+						)}
 					</div>
 				</div>
 			</nav>
