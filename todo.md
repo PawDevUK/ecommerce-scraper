@@ -18,12 +18,12 @@
 
 ## Front-end Development Plan
 
-- [ ] Enhance welcome page with platform overview and call-to-action
-- [ ] Complete Navigation component styling and responsiveness
+- [x] Enhance welcome page with platform overview and call-to-action
+- [x] Complete Navigation component styling and responsiveness
 - [ ] Build authentication pages (Sign In/Sign Up) with form validation
-- [ ] Create platform-specific pages (Amazon Business, Screwfix, RS Components, etc.)
-- [ ] Implement invoice fetching UI with input forms and loading states
-- [ ] Design results display for fetched invoices with proper formatting
+- [x] Create platform-specific pages (Amazon Business, Screwfix, RS Components, etc.)
+- [x] Implement invoice fetching UI with input forms and loading states
+- [x] Design results display for fetched invoices with proper formatting
 - [ ] Add error handling and user feedback components
 - [ ] Ensure mobile responsiveness across all pages
 - [ ] Integrate API endpoints for backend communication
