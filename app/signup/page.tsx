@@ -24,12 +24,6 @@ export default function SignUpPage() {
 			return;
 		}
 
-		if (!terms) {
-			setError('Please accept the terms and conditions');
-			setIsLoading(false);
-			return;
-		}
-
 		setIsLoading(true);
 
 		// Attempt registration
@@ -131,22 +125,6 @@ export default function SignUpPage() {
 							</button>
 						</div>
 					</div>
-					<div className='flex items-center'>
-						<input
-							id='terms'
-							name='terms'
-							type='checkbox'
-							className='h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded'
-							checked={terms}
-							onChange={(e) => setTerms(e.target.checked)}
-						/>
-						<label htmlFor='terms' className='ml-2 block text-sm text-gray-700'>
-							I agree to the{' '}
-							<a href='#' className='text-blue-600 hover:underline'>
-								Terms and Conditions
-							</a>
-						</label>
-					</div>
 					<div>
 						<button
 							type='submit'
@@ -179,12 +157,6 @@ export default function SignUpPage() {
 					</div>
 				</div>
 			</div>
-			<p className='mt-4 text-center text-sm text-gray-600'>
-				Already have an account?
-				<a href='/signin' className='text-blue-600 hover:underline font-bold ml-[5px]'>
-					Sign in →
-				</a>
-			</p>
 		</div>
 	);
 }
