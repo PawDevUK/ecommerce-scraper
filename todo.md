@@ -20,7 +20,7 @@
 
 - [x] Enhance welcome page with platform overview and call-to-action
 - [x] Complete Navigation component styling and responsiveness
-- [ ] Build authentication pages (Sign In/Sign Up) with form validation
+- [x] Build authentication pages (Sign In/Sign Up) with form validation
 - [x] Create platform-specific pages (Amazon Business, Screwfix, RS Components, etc.)
 - [x] Implement invoice fetching UI with input forms and loading states
 - [x] Design results display for fetched invoices with proper formatting
@@ -52,3 +52,8 @@ Platforms - after selected from the drop-down.
 - Login or log out
 - Status, if the service is active and all invoices are downoladed.
 - List of all invoices
+
+API Connect
+
+- Fetching list of platforms
+- Fetch Platform invoices
