@@ -19,8 +19,8 @@ export default async function Page() {
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4'>
 				<StatCard title='Invoices Due' value={metrics.invoicesDue} accent='orange' subtitle={metrics.invoicesDue === 0 ? 'Tracking pending' : undefined} />
 				<StatCard title='Invoices Paid' value={metrics.invoicesPaid} accent='green' subtitle={metrics.invoicesPaid === 0 ? 'Tracking pending' : undefined} />
-				<StatCard title='Total Paid' value={new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(metrics.totalPaidAmount)} accent='blue' />
-				<StatCard title='Total To Pay' value={new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(metrics.totalDueAmount)} accent='red' />
+				<StatCard title='Total Paid' value={new Intl.NumberFormat(undefined, { style: 'currency', currency: 'GBP' }).format(metrics.totalPaidAmount)} accent='blue' />
+				<StatCard title='Total To Pay' value={new Intl.NumberFormat(undefined, { style: 'currency', currency: 'GBP' }).format(metrics.totalDueAmount)} accent='red' />
 			</div>
 		</div>
 	);
