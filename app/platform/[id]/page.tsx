@@ -106,7 +106,7 @@ export default async function PlatformPage({ params }: PageProps) {
 											)}
 										</td>
 										<td className='py-3 px-4 text-sm text-gray-900'>
-											{invoice.amount ? new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(invoice.amount) : '—'}
+											{invoice.amount ? new Intl.NumberFormat(undefined, { style: 'currency', currency: 'GBP' }).format(invoice.amount) : '—'}
 										</td>
 									</tr>
 								))}
