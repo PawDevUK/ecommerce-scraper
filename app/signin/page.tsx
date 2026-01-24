@@ -4,17 +4,25 @@ import { useRouter } from 'next/navigation';
 import { authService } from '../../lib/auth';
 
 export default function LoginPage() {
-	const [email, setEmail] = useState(() => {
-		const savedEmail = localStorage.getItem('rememberedEmail');
-		const wasRemembered = localStorage.getItem('rememberMe') === 'true';
-		return savedEmail && wasRemembered ? savedEmail : '';
-	});
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [remember, setRemember] = useState(() => localStorage.getItem('rememberMe') === 'true');
+	const [remember, setRemember] = useState(false);
 	const [error, setError] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const router = useRouter();
+
+	// Load saved email on mount if remember me was checked
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const savedEmail = localStorage.getItem('rememberedEmail');
+			const wasRemembered = localStorage.getItem('rememberMe') === 'true';
+			if (savedEmail && wasRemembered) {
+				setEmail(savedEmail);
+				setRemember(true);
+			}
+		}
+	}, []);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
