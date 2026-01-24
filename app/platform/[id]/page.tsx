@@ -29,12 +29,9 @@ export default async function PlatformPage({ params }: PageProps) {
 	const statusBg = platform.isActive ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
 
 	return (
-		<div className='mainPading py-6'>
+		<div className='mainPading py-6 mt-6'>
 			{/* Header */}
 			<div className='mb-6'>
-				<Link href='/dashboard' className='text-blue-600 hover:underline text-sm mb-2 inline-block'>
-					← Back to Dashboard
-				</Link>
 				<h1 className='text-3xl font-bold text-amazon'>{platform.name}</h1>
 				<p className='text-gray-600 mt-2'>
 					View and manage all invoices downloaded from this platform. You can log in to fetch new invoices or review existing records below.
