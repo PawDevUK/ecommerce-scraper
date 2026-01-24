@@ -28,3 +28,27 @@
 - [ ] Ensure mobile responsiveness across all pages
 - [ ] Integrate API endpoints for backend communication
 - [ ] Polish global styles and add consistent theming
+
+# Daily Todo - 24/01/26
+
+Dashbooard
+
+I think dashborad need to be created of tailwind bento grid. It should have:
+
+- Platforms supported count
+- Platforms active/logged-in/connected  count
+- Platforms inactive/logged-out/disconected. It will help tracking any problems.
+
+- Invoices total downloaded
+- Invoices due.
+- Invoices paid
+- Total of invoces paid
+- Total of invoces to be paid
+
+Platforms - after selected from the drop-down.
+
+- Header
+- Brief explanation of what can be found on this page
+- Login or log out
+- Status, if the service is active and all invoices are downoladed.
+- List of all invoices
